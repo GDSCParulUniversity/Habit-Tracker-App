@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gdscpu.habitTrackerApp">
    <application
-        android:label="habit_tracker_app"
+        android:label="Habit Tracker App"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
