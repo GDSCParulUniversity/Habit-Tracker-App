@@ -1,4 +1,4 @@
-package com.example.habit_tracker_app
+package com.gdscpu.habitTrackerApp
 
 import io.flutter.embedding.android.FlutterActivity
 
