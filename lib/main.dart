@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:habit_tracker_app/common/constants/theme.dart';
 import 'package:habit_tracker_app/routes/router.dart';
 import 'package:habit_tracker_app/screens/screens.dart';
 
@@ -20,11 +21,10 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Habit Tracker App',
-          initialRoute: TrackScreen.routeName,
+          darkTheme: darkTheme(),
+          theme: lightTheme(),
+          initialRoute: SplashScreen.routeName,
           onGenerateRoute: generateRoute,
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
           home: child,
         );
       },

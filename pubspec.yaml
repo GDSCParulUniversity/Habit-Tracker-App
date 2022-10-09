@@ -19,6 +19,7 @@ dependencies:
   flutter_screenutil: ^5.5.4
   intl: ^0.17.0
   
+  flutter_svg: ^1.1.5
   
 
 dev_dependencies:
@@ -31,3 +32,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/icons/

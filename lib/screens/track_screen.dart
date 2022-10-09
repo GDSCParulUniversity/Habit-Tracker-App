@@ -65,7 +65,7 @@ class _TrackScreenState extends State<TrackScreen> {
                 ),
                 Text(
                   trackerAppBarHeading,
-                  style: headingStyle,
+                  style: MyTextStyle.headingStyle,
                 ),
               ],
             ),
@@ -74,24 +74,23 @@ class _TrackScreenState extends State<TrackScreen> {
             ),
             Text(
               trackerTitle,
-              style: subHeadingStyle,
+              style: MyTextStyle.subHeadingStyle,
             ),
             SizedBox(
               height: 5.h,
             ),
             TextField(
-              cursorColor: redColor,
-              style: subHeadingStyle.copyWith(
-                color: Colors.grey.shade700,
-                fontSize: 15.sp,
-              ),
+              cursorColor: AppColors.primaryColor,
+              style: MyTextStyle.subHeadingStyle
+                  .copyWith(color: Colors.grey, fontSize: 15.sp),
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
-                focusColor: redColor.withOpacity(0.33),
-                fillColor: greyColor,
+                focusColor: AppColors.primaryColor.withOpacity(0.33),
+                fillColor: Colors.grey.shade100,
                 filled: true,
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: redColor, width: 1),
+                  borderSide:
+                      BorderSide(color: AppColors.primaryColor, width: 1),
                   borderRadius: BorderRadius.circular(8.r),
                 ),
                 enabledBorder: OutlineInputBorder(
@@ -99,12 +98,13 @@ class _TrackScreenState extends State<TrackScreen> {
                   borderRadius: BorderRadius.circular(8.r),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: redColor, width: 1),
+                  borderSide:
+                      BorderSide(color: AppColors.primaryColor, width: 1),
                   borderRadius: BorderRadius.circular(8.r),
                 ),
                 hintText: 'Task Title',
-                hintStyle: subHeadingStyle.copyWith(
-                    color: Colors.grey.shade700, fontSize: 15.sp),
+                hintStyle: MyTextStyle.subHeadingStyle
+                    .copyWith(color: Colors.grey.shade300, fontSize: 15.sp),
               ),
             ),
             SizedBox(
@@ -118,7 +118,7 @@ class _TrackScreenState extends State<TrackScreen> {
                   children: [
                     Text(
                       trackerDate,
-                      style: subHeadingStyle,
+                      style:MyTextStyle.subHeadingStyle,
                     ),
                     SizedBox(
                       height: 5.h,
@@ -148,7 +148,7 @@ class _TrackScreenState extends State<TrackScreen> {
                         height: 45.h,
                         width: 155.w,
                         decoration: BoxDecoration(
-                          color: greyColor,
+                          color:AppColors.greyColor,
                           borderRadius: BorderRadius.circular(8.r),
                         ),
                         child: Center(
@@ -158,7 +158,7 @@ class _TrackScreenState extends State<TrackScreen> {
                               children: [
                                 Text(
                                   pickedData == '' ? trackerDate : pickedData,
-                                  style: subHeadingStyle.copyWith(
+                                  style: MyTextStyle.subHeadingStyle.copyWith(
                                     fontSize: 15.sp,
                                     color: Colors.grey.shade700,
                                   ),
@@ -183,7 +183,7 @@ class _TrackScreenState extends State<TrackScreen> {
                   children: [
                     Text(
                       trackerStartTime,
-                      style: subHeadingStyle,
+                      style: MyTextStyle.subHeadingStyle,
                     ),
                     SizedBox(
                       height: 5.h,
@@ -196,7 +196,7 @@ class _TrackScreenState extends State<TrackScreen> {
                         height: 45.h,
                         width: 155.w,
                         decoration: BoxDecoration(
-                          color: greyColor,
+                          color: AppColors.greyColor,
                           borderRadius: BorderRadius.circular(8.r),
                         ),
                         child: Center(
@@ -208,7 +208,7 @@ class _TrackScreenState extends State<TrackScreen> {
                                   pickedTime == ''
                                       ? trackerStartTime
                                       : pickedTime,
-                                  style: subHeadingStyle.copyWith(
+                                  style: MyTextStyle.subHeadingStyle.copyWith(
                                     fontSize: 15.sp,
                                     color: Colors.grey.shade700,
                                   ),
@@ -234,7 +234,7 @@ class _TrackScreenState extends State<TrackScreen> {
             ),
             Text(
               trackerSelectCat,
-              style: subHeadingStyle,
+              style: MyTextStyle.subHeadingStyle,
             ),
             SizedBox(
               height: 5.h,
@@ -243,7 +243,7 @@ class _TrackScreenState extends State<TrackScreen> {
               height: 45.h,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                color: greyColor,
+                color: AppColors.greyColor,
                 borderRadius: BorderRadius.circular(8.r),
               ),
               child: Padding(
@@ -269,7 +269,7 @@ class _TrackScreenState extends State<TrackScreen> {
                       child: Text(items),
                     );
                   }).toList(),
-                  style: subHeadingStyle.copyWith(
+                  style: MyTextStyle.subHeadingStyle.copyWith(
                     fontSize: 15.sp,
                     color: Colors.grey.shade700,
                   ),
