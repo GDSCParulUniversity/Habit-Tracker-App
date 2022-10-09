@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker_app/routes/router.dart';
 import 'package:habit_tracker_app/screens/screens.dart';
 
 void main() {
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
+      initialRoute: SplashScreen.routeName,
+      onGenerateRoute: generateRoute,
     );
   }
 }
