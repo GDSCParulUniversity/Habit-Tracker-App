@@ -17,6 +17,7 @@ dependencies:
   equatable: ^2.0.5
   google_fonts: ^3.0.1
   flutter_screenutil: ^5.5.4
+  flutter_svg: ^1.1.5
   
 
 dev_dependencies:
@@ -29,3 +30,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/icons/
