@@ -17,6 +17,8 @@ dependencies:
   equatable: ^2.0.5
   google_fonts: ^3.0.1
   flutter_screenutil: ^5.5.4
+  intl: ^0.17.0
+  
   
 
 dev_dependencies:
