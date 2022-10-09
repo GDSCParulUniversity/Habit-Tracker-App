@@ -12,3 +12,4 @@ class AppColors {
   //dark
   static const Color primaryDark = Colors.black;
 }
+

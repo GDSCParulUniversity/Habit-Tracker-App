@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker_app/screens/splash_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker_app/common/constants/theme.dart';
 import 'package:habit_tracker_app/routes/router.dart';
 import 'package:habit_tracker_app/screens/screens.dart';
+
 
 void main() {
   runApp(const MyApp());
