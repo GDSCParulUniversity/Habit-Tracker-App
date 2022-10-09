@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:habit_tracker_app/common/constants/textstyles.dart';
 import 'package:habit_tracker_app/screens/asset_helper.dart';
 
@@ -14,7 +15,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  int currentIndex = 0;
+  int currentIndex = -1;
   late PageController _controller;
 
   @override
@@ -32,67 +33,149 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: PageView(
-      controller: _controller,
-      physics: NeverScrollableScrollPhysics(),
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                AppColors.pinkLight,
-                AppColors.pink,
-              ],
-            ),
-          ),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+      backgroundColor: AppColors.backgroundLight,
+      body: Column(
+        children: [
+          Expanded(
+            child: PageView(
+              controller: _controller,
+              physics: NeverScrollableScrollPhysics(),
               children: [
-                Spacer(),
-                Image.asset(
-                  AssetHelper.logo,
-                  color: Colors.white,
-                  scale: 0.8,
-                ),
-                SizedBox(height: 180.h),
-                InkWell(
-                  onTap: () {
-                    _controller.nextPage(
-                      duration: Duration(milliseconds: 150),
-                      curve: Curves.bounceIn,
-                    );
-                  },
-                  child: Container(
-                    height: 40.h,
-                    width: 320.w,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40.r),
-                      color: AppColors.backgroundLight,
+                Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        AppColors.pinkLight,
+                        AppColors.pink,
+                      ],
                     ),
-                    child: Center(
-                      child: Text(
-                        "Next",
-                        style: MyTextStyle.subHeadingStyle,
-                      ),
+                  ),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Spacer(),
+                        Image.asset(
+                          AssetHelper.logo,
+                          color: Colors.white,
+                          scale: 0.8,
+                        ),
+                        SizedBox(height: 180.h),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              currentIndex++;
+                            });
+                            _controller.nextPage(
+                              duration: Duration(milliseconds: 150),
+                              curve: Curves.bounceIn,
+                            );
+                          },
+                          child: Container(
+                            height: 40.h,
+                            width: 320.w,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40.r),
+                              color: AppColors.backgroundLight,
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Next",
+                                style: MyTextStyle.subHeadingStyle,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 100.h),
+                      ],
                     ),
                   ),
                 ),
-                SizedBox(height: 100.h),
+                Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.backgroundLight,
+                  ),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Spacer(),
+                        SvgPicture.asset(AssetHelper.onboardingOne),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 15.w),
+                          child: Text(
+                            "Easy task & work management with pomo",
+                            style: MyTextStyle.headingStyle,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        SizedBox(height: 20.h),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              currentIndex++;
+                            });
+                            _controller.nextPage(
+                              duration: Duration(milliseconds: 150),
+                              curve: Curves.bounceIn,
+                            );
+                          },
+                          child: Container(
+                            height: 40.h,
+                            width: 320.w,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40.r),
+                              gradient: LinearGradient(
+                                colors: [
+                                  AppColors.pinkLight,
+                                  AppColors.pink,
+                                ],
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Next",
+                                style: MyTextStyle.subHeadingStyle.copyWith(
+                                  color: AppColors.backgroundLight,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 40.h),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
-        ),
-        Container(
-          decoration: BoxDecoration(),
-          child: Center(
-            child: Image.asset(
-              AssetHelper.logo,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ],
-    ));
+          currentIndex == -1
+              ? Container()
+              : Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      3,
+                      (index) => buildDot(index, context),
+                    ),
+                  ),
+                ),
+          currentIndex == -1 ? Container() : SizedBox(height: 40.h),
+        ],
+      ),
+    );
+  }
+
+  Container buildDot(int index, BuildContext context) {
+    return Container(
+      height: 10.h,
+      width: currentIndex == index ? 25.w : 10.w,
+      margin: EdgeInsets.only(right: 5),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.r),
+        color: AppColors.pink,
+      ),
+    );
   }
 }
