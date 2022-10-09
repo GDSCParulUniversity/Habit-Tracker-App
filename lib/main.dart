@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker_app/routes/router.dart';
 import 'package:habit_tracker_app/screens/screens.dart';
 
@@ -11,14 +12,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Habit Tracker App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      initialRoute: SplashScreen.routeName,
-      onGenerateRoute: generateRoute,
+    return ScreenUtilInit(
+      designSize: const Size(380, 720),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Habit Tracker App',
+          initialRoute: TrackScreen.routeName,
+          onGenerateRoute: generateRoute,
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: child,
+        );
+      },
     );
   }
 }
