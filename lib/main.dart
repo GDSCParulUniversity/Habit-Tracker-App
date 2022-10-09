@@ -11,11 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Habit Tracker App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: SplashScreen.routeName,
+      home: SplashScreen(),
     );
   }
 }
