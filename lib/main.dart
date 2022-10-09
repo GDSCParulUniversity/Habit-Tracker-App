@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'screens/Login Screen/login.dart';
+import 'package:habit_tracker_app/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,8 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginScreen(),
-      // initialRoute: SplashScreen.routeName,
+      initialRoute: SplashScreen.routeName,
     );
   }
 }
