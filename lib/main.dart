@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           title: 'Habit Tracker App',
           darkTheme: darkTheme(),
           theme: lightTheme(),
-          initialRoute: TrackScreen.routeName,
+          initialRoute: SplashScreen.routeName,
           onGenerateRoute: generateRoute,
           home: child,
         );
