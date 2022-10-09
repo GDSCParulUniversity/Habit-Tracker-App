@@ -36,7 +36,7 @@ class TrackScreen extends StatelessWidget {
                 ),
                 Text(
                   trackerAppBarHeading,
-                  style: headingStyle,
+                  style: MyTextStyle.headingStyle,
                 ),
               ],
             ),
@@ -45,22 +45,23 @@ class TrackScreen extends StatelessWidget {
             ),
             Text(
               trackerTitle,
-              style: subHeadingStyle,
+              style: MyTextStyle.subHeadingStyle,
             ),
             SizedBox(
               height: 5.h,
             ),
             TextField(
-              cursorColor: redColor,
-              style:
-                  subHeadingStyle.copyWith(color: Colors.grey, fontSize: 15.sp),
+              cursorColor: AppColors.primaryColor,
+              style: MyTextStyle.subHeadingStyle
+                  .copyWith(color: Colors.grey, fontSize: 15.sp),
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
-                focusColor: redColor.withOpacity(0.33),
+                focusColor: AppColors.primaryColor.withOpacity(0.33),
                 fillColor: Colors.grey.shade100,
                 filled: true,
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: redColor, width: 1),
+                  borderSide:
+                      BorderSide(color: AppColors.primaryColor, width: 1),
                   borderRadius: BorderRadius.circular(8.r),
                 ),
                 enabledBorder: OutlineInputBorder(
@@ -68,12 +69,13 @@ class TrackScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8.r),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: redColor, width: 1),
+                  borderSide:
+                      BorderSide(color: AppColors.primaryColor, width: 1),
                   borderRadius: BorderRadius.circular(8.r),
                 ),
                 hintText: 'Task Title',
-                hintStyle: subHeadingStyle.copyWith(
-                    color: Colors.grey.shade300, fontSize: 15.sp),
+                hintStyle: MyTextStyle.subHeadingStyle
+                    .copyWith(color: Colors.grey.shade300, fontSize: 15.sp),
               ),
             ),
             SizedBox(

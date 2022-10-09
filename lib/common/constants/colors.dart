@@ -1,3 +1,11 @@
 import 'package:flutter/material.dart';
 
-const Color redColor = Colors.red;
+class AppColors {
+  //light
+  static const Color primaryColor = Colors.red;
+
+  static const Color backgroundLight = Colors.white;
+
+  //dark
+  static const Color primaryDark = Colors.black;
+}
