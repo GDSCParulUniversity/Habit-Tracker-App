@@ -5,6 +5,7 @@ import 'package:habit_tracker_app/common/constants/headings.dart';
 import 'package:habit_tracker_app/common/constants/textstyles.dart';
 
 class TrackScreen extends StatelessWidget {
+  static const routeName = '/new-track-screen';
   const TrackScreen({Key? key}) : super(key: key);
 
   @override
