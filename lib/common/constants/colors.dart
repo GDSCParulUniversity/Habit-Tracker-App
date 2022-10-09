@@ -7,6 +7,7 @@ class AppColors {
   static const Color pink = Color(0xffff6266);
   static const Color buttonColor = Color(0xffff575b);
   static const Color backgroundLight = Colors.white;
+  static Color greyColor = Colors.grey.shade200;
 
   //dark
   static const Color primaryDark = Colors.black;
