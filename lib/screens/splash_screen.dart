@@ -100,11 +100,73 @@ class _SplashScreenState extends State<SplashScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Spacer(),
-                        SvgPicture.asset(AssetHelper.onboardingOne),
+                        SvgPicture.asset(
+                          AssetHelper.onboardingOne,
+                          height: 500.h,
+                        ),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 15.w),
                           child: Text(
                             "Easy task & work management with pomo",
+                            style: MyTextStyle.headingStyle,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        SizedBox(height: 20.h),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              currentIndex++;
+                            });
+                            _controller.nextPage(
+                              duration: Duration(milliseconds: 150),
+                              curve: Curves.bounceIn,
+                            );
+                          },
+                          child: Container(
+                            height: 40.h,
+                            width: 320.w,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40.r),
+                              gradient: LinearGradient(
+                                colors: [
+                                  AppColors.pinkLight,
+                                  AppColors.pink,
+                                ],
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Next",
+                                style: MyTextStyle.subHeadingStyle.copyWith(
+                                  color: AppColors.backgroundLight,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 40.h),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.backgroundLight,
+                  ),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Spacer(),
+                        SvgPicture.asset(
+                          AssetHelper.onboardingTwo,
+                          height: 500.h,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 15.w),
+                          child: Text(
+                            "Track your productivity & gain insights",
                             style: MyTextStyle.headingStyle,
                             textAlign: TextAlign.center,
                           ),
