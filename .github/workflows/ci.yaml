@@ -18,13 +18,12 @@ jobs:
        with:
         java-version: "12.x"
      - uses: subosito/flutter-action@v2.6.1
-
-     - run: flutter pub get
-
-     - run: flutter clean
-
-     - run: flutter build apk --release
-
+     - name: "Flutter clean | get | build"
+       run: |
+        flutter pub get
+        flutter clean
+        flutter build apk --release
+      
      - uses: actions/upload-artifact@v1
        with:
           name: release-apk
