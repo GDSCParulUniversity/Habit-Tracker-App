@@ -38,11 +38,11 @@ jobs:
         
         [[ -z $current_verision ]] && {
             echo "NO release found?"
-            echo "Fallback to V0000"
-            current_verision="0000"
+            echo "Fallback to V0"
+            current_verision=0
         }
         
-        new_release="V$($current_verision + 1))"
+        new_release="V$(($current_verision + 1))"
         echo "VERSIONTAG=$new_release" >> $GITHUB_ENV
      
      - name: Generate release notes
