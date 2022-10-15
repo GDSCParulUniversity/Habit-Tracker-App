@@ -1,0 +1,67 @@
+name: Habit Tracker App CI
+on:
+  push:
+    branches:
+    - main
+
+
+jobs:
+  flutter_build:
+   name: Run flutter build
+   runs-on: ubuntu-latest
+   steps:
+     - uses: actions/checkout@v2
+     - uses: actions/setup-java@v1
+       with:
+        java-version: "12.x"
+     - uses: subosito/flutter-action@v2.6.1
+     - name: "Flutter clean | get | build"
+       run: |
+        flutter pub get
+        flutter clean
+        flutter build apk --release
+      
+     - uses: actions/upload-artifact@v1
+       with:
+          name: release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+    
+     - name: Compute release tag
+       run: |
+        repo_link="https://github.com/GDSCParulUniversity/Habit-Tracker-App"
+        
+        current_verision=$(git -c 'versionsort.suffix=-' ls-remote --tags --sort='v:refname' \
+                  $repo_link | tail -n1 | cut -d / -f 3 | cut -d V -f 2-)
+        
+        [[ -z $current_verision ]] && {
+            echo "NO release found?"
+            echo "Fallback to V0"
+            current_verision=0
+        }
+        
+        new_release="V$(($current_verision + 1))"
+        echo "VERSIONTAG=$new_release" >> $GITHUB_ENV
+     
+     - name: Generate release notes
+       run: |
+        echo "Habit Tracker ${VERSIONTAG}" > release.md
+      
+     - name: Create Release
+       id: create_release
+       uses: actions/create-release@v1
+       env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       with:
+         tag_name: ${{ env.VERSIONTAG }}
+         release_name: ${{ env.VERSIONTAG }}
+         body_path: release.md
+         draft: false
+         prerelease: false
+
+     - name: Upload assets
+       run: |
+         set -x
+         sleep 10
+         hub release edit -F release.md -a build/app/outputs/flutter-apk/app-release.apk -m "$VERSIONTAG" "$VERSIONTAG"
+       env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

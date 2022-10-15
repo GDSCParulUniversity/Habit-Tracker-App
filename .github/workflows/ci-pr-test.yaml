@@ -1,11 +1,5 @@
 name: Habit Tracker App CI
-on:
-  push:
-    branches:
-    - main
-  pull_request:
-    branches:
-    - main
+on: pull_request
 
 
 jobs:
@@ -28,4 +22,4 @@ jobs:
      - uses: actions/upload-artifact@v1
        with:
           name: release-apk
-          path: build/app/outputs/apk/release/app-release.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
