@@ -28,3 +28,40 @@ jobs:
        with:
           name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
+    
+     - name: Compute release tag
+       run: |
+        repo_link="https://github.com/GDSCParulUniversity/Habit-Tracker-App"
+        
+        current_verision=$(git -c 'versionsort.suffix=-' ls-remote --tags --sort='v:refname' \
+                  $repo_link | tail -n1 | cut -d / -f 3 | cut -d V -f 2-)
+        
+        [[ -z $current_verision ]] && {
+            echo "NO release found?"
+            echo "Fallback to V0000"
+            current_verision=init_version
+        }
+        
+        new_release="V$($current_verision + 1))"
+        echo "VERSIONTAG=$new_release" >> $GITHUB_ENV
+     
+     - name: Generate release notes
+       run: |
+        echo "Habit Tracker ${VERSIONTAG}" > release.md
+      
+     - name: Create Release
+       id: create_release
+       uses: actions/create-release@v1
+       env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       with:
+         tag_name: ${{ env.VERSIONTAG }}
+         release_name: ${{ env.VERSIONTAG }}
+         body_path: release.md
+         draft: false
+         prerelease: false
+
+     - name: Upload assets
+       run: |
+         set -x
+         hub release edit -F release.md -a build/app/outputs/flutter-apk/app-release.apk -m "$tag_name" "$tag_name"
