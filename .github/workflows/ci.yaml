@@ -64,4 +64,4 @@ jobs:
      - name: Upload assets
        run: |
          set -x
-         hub release edit -F release.md -a build/app/outputs/flutter-apk/app-release.apk -m "$tag_name" "$tag_name"
+         hub release edit -F release.md -a build/app/outputs/flutter-apk/app-release.apk -m "$VERSIONTAG" "$VERSIONTAG"
