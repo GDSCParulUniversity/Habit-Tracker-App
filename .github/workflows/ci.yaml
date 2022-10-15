@@ -39,7 +39,7 @@ jobs:
         [[ -z $current_verision ]] && {
             echo "NO release found?"
             echo "Fallback to V0000"
-            current_verision=0000
+            current_verision="0000"
         }
         
         new_release="V$($current_verision + 1))"
