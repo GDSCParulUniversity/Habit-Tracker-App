@@ -64,7 +64,7 @@ jobs:
      - name: Upload assets
        run: |
          set -x
-         sleep 6
+         sleep 10
          hub release edit -F release.md -a build/app/outputs/flutter-apk/app-release.apk -m "$VERSIONTAG" "$VERSIONTAG"
        env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
